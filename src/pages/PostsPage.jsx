@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function PostsPage() {
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:3000/posts").then((res) => {
       console.log(res.data.data);
@@ -24,17 +25,14 @@ export default function PostsPage() {
         </thead>
 
         <tbody>
-          {/* <tr>
-            <th>1</th>
-            <th>Ciao</th>
-            <th>Click</th>
-          </tr> */}
           {posts.map((post) => {
             return (
               <tr key={post.id}>
                 <td>{post.id}</td>
                 <td>{post.title}</td>
-                <td>Click</td>
+                <td>
+                  <Link to={`/posts/${post.id}`}>Open</Link>
+                </td>
               </tr>
             );
           })}

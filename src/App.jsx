@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import HomePage from "./pages/HomePage";
 import AboutUsPage from "./pages/AboutUsPage";
 import PostsPage from "./pages/PostsPage";
+import PostDetailPage from "./pages/PostDetailPage";
+
 // import NotFoundPage from "./pages/NotFoundPage";
 
 //layouts
@@ -21,6 +23,7 @@ function App() {
           {/* Rotte che hanno in comune il prefisso /posts */}
           <Route path="/posts">
             <Route path="" element={<PostsPage />} />
+            <Route path=":id" element={<PostDetailPage />} />
           </Route>
 
           {/* <Route path="*" element={<NotFoundPage />} /> */}
